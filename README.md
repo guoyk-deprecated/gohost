@@ -6,6 +6,10 @@ You can map a Github organization to you own site.
 
 View https://go.guoyk.net for example
 
+## Docker
+
+use `guoyk/gohost`
+
 ## Environment Variables
 
 * `BIND`, host and port to bind, default to `:5000`
