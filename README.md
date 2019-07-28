@@ -2,9 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/go-guoyk/gohost.svg)
 
-custom golang package hosting
-
-You can map a Github organization to you own site.
+custom golang package hosting by mapping a Github organization to you own site.
 
 View https://go.guoyk.net for example
 
