@@ -81,6 +81,10 @@ func update() {
 	return
 }
 
+func routeHealthz(ctx echo.Context) error {
+	return ctx.String(http.StatusOK, "OK")
+}
+
 func routeIndex(ctx echo.Context) error {
 	var keys []string
 	for k := range Packages {
@@ -129,6 +133,7 @@ func main() {
 	e.Use(middleware.Logger())
 
 	e.GET("/", routeIndex)
+	e.GET("/healthz", routeHealthz)
 	e.GET("/:name", routePackage)
 	e.GET("/:name/*", routePackage)
 
