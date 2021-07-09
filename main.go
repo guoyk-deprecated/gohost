@@ -33,7 +33,7 @@ func init() {
 		optSiteFQDN = "go.guoyk.net"
 	}
 	if optSiteName = os.Getenv("SITE_NAME"); len(optSiteName) == 0 {
-		optSiteName = "Go - Guo Y.K."
+		optSiteName = "go.guoyk.net"
 	}
 	if optGithubOrg = os.Getenv("GITHUB_ORG"); len(optGithubOrg) == 0 {
 		optGithubOrg = "go-guoyk"
@@ -130,7 +130,11 @@ func main() {
 	e.Renderer = DefaultTemplate
 
 	e.Use(middleware.Recover())
-	e.Use(middleware.Logger())
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Skipper: func(context echo.Context) bool {
+			return context.Path() == "/healthz"
+		},
+	}))
 
 	e.GET("/", routeIndex)
 	e.GET("/healthz", routeHealthz)
